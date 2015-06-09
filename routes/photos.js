@@ -7,7 +7,7 @@ router.get('/id/:id', function(req, res) {
 	if(req.param('id')){
 		var params = {
 			photoID : req.param('id')
-		}
+		};
 		model.getPhotoByID(params, function(err, obj){
 			if(err){
 					res.status(400).send({error: 'Invalid photo ID'});
@@ -26,7 +26,7 @@ router.post('/upload', function(req, res) {
  		var params = {
  			userID 		: req.param('userID'),
  			albumID 	: req.param('albumID')
- 		}
+ 		};
  		if(req.param('caption')){
  			params.caption = req.param('caption');
  		}
@@ -48,7 +48,7 @@ router.post('/delete', function(req, res) {
 	if(req.param('id')){
 		var params = {
 			photoID : req.param('id')
-		}
+		};
 		model.deletePhoto(params, function(err, obj){
 			if(err){
 				res.status(400).send({error: 'Photo not found'});

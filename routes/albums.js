@@ -7,7 +7,7 @@ router.get('/id/:albumID', function(req, res) {
 	if(req.param('albumID')){
 		var params = {
 			albumID : req.param('albumID')
-		}
+		};
 		model.getAlbumByID(params, function(err, obj){
 			if(err){
 				res.status(400).send({error: 'Invalid album ID'});
@@ -26,7 +26,7 @@ router.post('/upload', function(req, res) {
  		var params = {
  			userID 		: req.param('userID'),
  			title 		: req.param('title')
- 		}
+ 		};
  		model.createAlbum(params, function(err, obj){
 			if(err){
 				res.status(400).send({error: 'Invalid album data'});
@@ -44,7 +44,7 @@ router.post('/delete', function(req, res) {
 	if(req.param('albumID')){
 		var params = {
 			albumID : req.param('albumID')
-		}
+		};
 		model.deleteAlbum(params, function(err, obj){
 			if(err){
 				res.status(400).send({error: 'Album not found'});

@@ -5,12 +5,13 @@ var model 		= require('./../lib/model/model-users');
 /* GET users listing. */
 router.get('/', function(req, res) {
   model.getAllUsers(function(err, obj){
+  	console.log(obj);
   	if(err){
   		res.status(500).send({error: 'An unknown server error has occurred!'});
   	} else {
   		res.send(obj);
   	}
-  })
+  });
 });
 
 
@@ -18,7 +19,7 @@ router.get('/', function(req, res) {
 router.get('/user/:user', function(req, res) {
 	var params= {
 		username: req.param('user')
-	}
+	};
 	model.getUser(params, function(err, obj){
 		if(err){
 	  		res.status(500).send({error: 'An unknown server error has occurred!'});
@@ -38,7 +39,7 @@ router.post('/login', function(req, res) {
 
 		model.loginUser(params, function(err, obj){
 			if(err){
-				res.status(400).send({error: 'Invalid login'});
+				res.status(400).send({error: 'Invalid login attempt'});
 			} else {
 				res.send(obj);
 			}
@@ -69,6 +70,7 @@ router.post('/register', function(req, res) {
 		var email = unescape(req.param('email'));
 		var emailMatch = email.match(/\S+@\S+\.\S+/);
 		if (emailMatch !== null) {
+			console.log('not null');
 			var params = {
 				username: req.param('username').toLowerCase(),
 				password: req.param('password'),
