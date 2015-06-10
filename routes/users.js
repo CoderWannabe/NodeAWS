@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
 
 
 /* GET albums by user */
-router.get('/user/:user', function(req, res) {
+router.get('/users/:user', function(req, res) {
 	var params= {
 		username: req.param('user')
 	};
